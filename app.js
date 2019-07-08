@@ -152,13 +152,14 @@
 
 
 /**Copying and compressing files with pipes and pipe chainging */
-const fs = require('fs');
-//zlib is used to comporess files
-const zlib = require('zlib');
+// const fs = require('fs');
+// //zlib is used to comporess files
+// const zlib = require('zlib');
 
-//takes data and manipulates data
-const gzip = zlib.createGzip();
+// //takes data and manipulates data
+// const gzip = zlib.createGzip();
 
-const readStream = fs.createReadStream('./example.txt', 'utf8');
-const writeStream = fs.createWriteStream('./example2.txt.gz');
-readStream.pipe(gzip).pipe(writeStream);
+// const readStream = fs.createReadStream('./example.txt', 'utf8');
+// const writeStream = fs.createWriteStream('./example2.txt.gz');
+// readStream.pipe(gzip).pipe(writeStream);
+

@@ -18,16 +18,19 @@
  * I can also write what to expect in request and response accordingly.
  * There can both request and response in same function of code
  */
-const http = require('http');
-const server = http.createServer(function(req, res){
-  if(req.url === '/'){
-    res.write("Thanks for choosing online banking");
-    res.end();
-  } else {
-    res.write("404. Page not found");
-    res.end();
-  }
-});
+// const http = require('http');
+// const server = http.createServer(function(req, res){
+//   if(req.url === '/'){
+//     res.write("Thanks for choosing online banking");
+//     res.end();
+//   } else {
+//     res.write("404. Page not found");
+//     res.end();
+//   }
+// });
 
-server.listen(8000);
+// server.listen(8000);
 
+
+// serving static files with http and 
+// file system modules
