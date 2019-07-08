@@ -79,4 +79,21 @@ const fs = require('fs');
 // })
 
 
+//creating folder and then file
 
+fs.mkdir("newwFolder", function(err){
+  console.log('inside fs.mkdir function');
+  if (err) console.log(err);
+  else{
+    fs.writeFile('newFile.txt', "This is the new file!!", function (err){
+      console.log('file created');
+      if (err) console.log(err);
+      else{
+        fs.rename('newFile.txt', 'newrenamedFile', function(err){
+          if(err) console.log(err);
+          else('Successfull created folder, file and renamed it!!');
+        })
+      }
+    })
+  }
+})
