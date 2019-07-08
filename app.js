@@ -1,6 +1,9 @@
 // 1. EventEmitter => Event
 // 2. ReadLine Module
 // 3. Working with file system
+//******Streams, buffer, pipe chaining are pretty important*****/
+// 4. working with Readable and Writable Streams
+// 5. Pipes and Pipe Chaining
 
 
 // const readline = require('readline');
@@ -30,6 +33,8 @@
 //   console.log('Now that is the correct answer.');
 // });
 
+
+/*********** EventEmitter ********** */
 // const EventEmitter = require('events');
 
 // const eventEmitter = new EventEmitter();
@@ -43,7 +48,10 @@
 
 // eventEmitter.emit('/id:111');
 
-const fs = require('fs');
+
+/***** Working with filesystem******** */
+
+// const fs = require('fs');
 
 // create a file
 // fs.writeFile('example.txt', "Whatever it takes B", function(err){
@@ -107,16 +115,50 @@ const fs = require('fs');
 //   }
 // })
 
-fs.readdir('example', function(err, files){
-  if(err) console.log(err);
-    else {
-      for (let file of files){
-          fs.unlink('./example/' + file, function (err){
-            if(err) console.log(err);
-            else{
-              console.log('Everything worked as they were supposed to.')
-            }
-          })
-      }
-    }
-})
+// fs.readdir('example', function(err, files){
+//   if(err) console.log(err);
+//     else {
+//       for (let file of files){
+//           fs.unlink('./example/' + file, function (err){
+//             if(err) console.log(err);
+//             else{
+//               console.log('Everything worked as they were supposed to.')
+//             }
+//           })
+//       }
+//     }
+// })
+
+
+/** *******copying content of file while reading a file ******/
+// const fs = require('fs');
+
+// const readStream = fs.createReadStream('./example.txt', 'utf8');
+// const writeStream = fs.createWriteStream('example1.txt');
+// readStream.on('data', function(chunk){
+//   writeStream.write(chunk);
+// })
+
+//*******  why should one use Streams *******//
+// any number of large file can be read and copied to another 
+// file by using sreams in nodejs which are present withing file system (fs)
+
+
+/**Pipes and pipe chaining */
+// const fs = require('fs');
+// const readStream = fs.createReadStream('./example.txt');
+// const wrtieStream = fs.createWriteStream('./example1.txt');
+// readStream.pipe(wrtieStream);
+
+
+/**Copying and compressing files with pipes and pipe chainging */
+const fs = require('fs');
+//zlib is used to comporess files
+const zlib = require('zlib');
+
+//takes data and manipulates data
+const gzip = zlib.createGzip();
+
+const readStream = fs.createReadStream('./example.txt', 'utf8');
+const writeStream = fs.createWriteStream('./example2.txt.gz');
+readStream.pipe(gzip).pipe(writeStream);
