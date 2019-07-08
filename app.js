@@ -81,19 +81,42 @@ const fs = require('fs');
 
 //creating folder and then file
 
-fs.mkdir("newwFolder", function(err){
-  console.log('inside fs.mkdir function');
-  if (err) console.log(err);
-  else{
-    fs.writeFile('newFile.txt', "This is the new file!!", function (err){
-      console.log('file created');
-      if (err) console.log(err);
-      else{
-        fs.rename('newFile.txt', 'newrenamedFile', function(err){
-          if(err) console.log(err);
-          else('Successfull created folder, file and renamed it!!');
-        })
+// fs.mkdir("newwFolder", function(err){
+//   console.log('inside fs.mkdir function');
+//   if (err) console.log(err);
+//   else{
+//     fs.writeFile('./newwFolder/newFile.txt', "This is the new file!!", function (err){
+//       console.log('file created');
+//       if (err) console.log(err);
+//       else{
+//         fs.rename('/newwFolder/newFile.txt', 'newrenamedFile', function(err){
+//           if(err) console.log(err);
+//           else('Successfull created folder, file and renamed it!!');
+//         })
+//       }
+//     })
+//   }
+// })
+
+// fs.unlink('./newwFolder/newFile.txt', function(err){
+//   if(err) console.log(err);
+//   else{
+//     fs.rmdir('newwFolder', function(err){
+//       if(err) console.log(err)
+//     else  console.log('everything is removed');    })
+//   }
+// })
+
+fs.readdir('example', function(err, files){
+  if(err) console.log(err);
+    else {
+      for (let file of files){
+          fs.unlink('./example/' + file, function (err){
+            if(err) console.log(err);
+            else{
+              console.log('Everything worked as they were supposed to.')
+            }
+          })
       }
-    })
-  }
+    }
 })
