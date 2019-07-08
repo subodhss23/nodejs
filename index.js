@@ -32,5 +32,36 @@
 // server.listen(8000);
 
 
-// serving static files with http and 
-// file system modules
+//************** */ serving static files with http and 
+//********** */ file system modules
+
+// const http = require('http');
+// const fs = require('fs');
+
+// const server = http.createServer(function(req, res){
+//     if(req.url === '/'){
+//       // reading static files with readStream
+//     const readStream = fs.createReadStream('./example.json');
+//     res.writeHead(200,{'Content-Type': 'application/json'});
+//     //  piping/sending to res obj with readStream
+//     // res is a writeable stream
+//     readStream.pipe(res);
+//     } else {
+//       res.write('Not a valid path');
+//       res.end();
+//     }
+    
+// }).listen(3000);
+
+// const lodash = require('lodash');
+
+// let example = lodash.fill([1,2,3,5,5],"banana",1, 3);
+ 
+// console.log(example);
+
+/**** Semantic versioning*/
+
+//^4.17.11
+//major.minor.patch
+//what does carrot symbolize ^ ??
+//I do not want you to make major update
